@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 async function sendEmail(email, otp) {
   try {
     const result = await resend.emails.send({
-      from: "noreply@yourdomain.com", // or use resend's default
+      from: "onboarding@resend.dev", // or use resend's default
       to: email,
       subject: "Your OTP",
       html: `<p>Your OTP: <strong>${otp}</strong></p>`,
