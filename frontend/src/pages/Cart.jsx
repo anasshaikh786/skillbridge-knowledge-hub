@@ -114,7 +114,7 @@ export default function Cart() {
           <div className="lg:col-span-2 space-y-4" data-testid="cart-items-list">
             {items.map((c) => (
               <div key={c.id} className="bg-[#121214] border border-zinc-800/60 rounded-2xl p-5 flex gap-5">
-                <img src={c.thumbnail} className="w-40 aspect-video object-cover rounded-xl bg-zinc-900" />
+                <img src={c.thumbnail} alt={c.courseName || "Course thumbnail"} className="w-40 aspect-video object-cover rounded-xl bg-zinc-900" />
                 <div className="flex-1">
                   <p className="text-xs uppercase tracking-widest text-[#FFD60A]">{c.category?.name}</p>
                   <h3 className="font-display font-bold text-white mt-1">{c.courseName}</h3>

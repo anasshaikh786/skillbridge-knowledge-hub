@@ -73,7 +73,7 @@ export default function InstructorDashboard() {
         <div className="space-y-4" data-testid="instructor-courses-list">
           {stats.perCourse.map((c) => (
             <div key={c.id} className="bg-[#121214] border border-zinc-800/60 rounded-2xl p-5 flex flex-wrap items-center gap-5">
-              <img src={c.thumbnail} className="w-28 aspect-video object-cover rounded-xl bg-zinc-900" />
+              <img src={c.thumbnail}  alt={c.courseName || "Course thumbnail"} className="w-28 aspect-video object-cover rounded-xl bg-zinc-900" />
               <div className="flex-1 min-w-[200px]">
                 <h3 className="font-display font-bold text-white">{c.name}</h3>
                 <div className="flex items-center gap-4 text-xs text-zinc-500 mt-2">

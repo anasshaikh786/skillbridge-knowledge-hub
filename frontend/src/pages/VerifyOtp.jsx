@@ -15,7 +15,7 @@ export default function VerifyOtp() {
   const [signup, setSignup] = useState(null);
   const [devOtp, setDevOtp] = useState("");
 
-  useEffect(() => {
+useEffect(() => {
   const raw = sessionStorage.getItem("sn_signup");
   if (!raw) {
     nav("/signup");

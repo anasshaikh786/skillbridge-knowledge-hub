@@ -51,7 +51,7 @@ export default function StudentDashboard() {
             const pct = totalLessons ? Math.round((done / totalLessons) * 100) : 0;
             return (
               <Link key={c.id} to={`/learn/${c.id}`} className="bg-[#121214] border border-zinc-800/60 rounded-2xl overflow-hidden hover:border-zinc-700 transition-colors">
-                <div className="aspect-video overflow-hidden bg-zinc-900"><img src={c.thumbnail} className="w-full h-full object-cover" /></div>
+                <div className="aspect-video overflow-hidden bg-zinc-900"><img src={c.thumbnail} alt={c.courseName || "Course thumbnail"} className="w-full h-full object-cover" /></div>
                 <div className="p-5">
                   <h3 className="font-display font-bold text-white line-clamp-2">{c.courseName}</h3>
                   <div className="mt-4">
