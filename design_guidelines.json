@@ -1,0 +1,156 @@
+{
+  "project_name": "StudyNotion",
+  "theme": "dark",
+  "colors": {
+    "background": {
+      "default": "#09090B",
+      "paper": "#121214",
+      "surface": "#18181B"
+    },
+    "primary": {
+      "main": "#FFD60A",
+      "hover": "#FFC300",
+      "muted": "rgba(255, 214, 10, 0.1)",
+      "foreground": "#000000"
+    },
+    "secondary": {
+      "main": "#27272A",
+      "hover": "#3F3F46",
+      "foreground": "#FFFFFF"
+    },
+    "text": {
+      "primary": "#F4F4F5",
+      "secondary": "#A1A1AA",
+      "disabled": "#52525B"
+    },
+    "border": {
+      "default": "#27272A",
+      "focus": "#FFD60A"
+    },
+    "status": {
+      "success": "#10B981",
+      "error": "#EF4444",
+      "warning": "#F59E0B"
+    }
+  },
+  "typography": {
+    "font_family": {
+      "heading": "'Cabinet Grotesk', 'Outfit', sans-serif",
+      "body": "'Inter', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl font-black tracking-tighter leading-none text-white",
+      "h2": "text-4xl sm:text-5xl font-bold tracking-tight text-white",
+      "h3": "text-2xl sm:text-3xl font-bold tracking-tight text-white",
+      "h4": "text-xl font-semibold tracking-tight text-zinc-200",
+      "body": "text-base font-normal leading-relaxed text-zinc-400",
+      "small": "text-sm font-medium text-zinc-500 uppercase tracking-widest"
+    }
+  },
+  "spacing_and_layout": {
+    "philosophy": "Generous spacing. Break standard symmetry. Use Bento grids for dashboards.",
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "section_gap": "py-24 md:py-32",
+    "bento_grid": "grid grid-cols-1 md:grid-cols-4 gap-6",
+    "card_padding": "p-8 md:p-10"
+  },
+  "components": {
+    "button": {
+      "primary": "bg-[#FFD60A] text-black hover:bg-[#FFC300] font-bold rounded-full px-8 py-4 transition-transform active:scale-95",
+      "secondary": "bg-zinc-900 text-white border border-zinc-800 hover:bg-zinc-800 rounded-full px-8 py-4 transition-transform active:scale-95",
+      "ghost": "text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-full px-6 py-3 transition-colors"
+    },
+    "card": {
+      "course": "bg-[#121214] border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 rounded-2xl overflow-hidden group hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)]",
+      "dashboard_stat": "bg-[#121214] border border-zinc-800 rounded-2xl p-6 relative overflow-hidden"
+    },
+    "inputs": {
+      "text": "bg-zinc-900 border border-zinc-800 text-white rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#FFD60A] focus:border-transparent transition-all outline-none",
+      "label": "block text-sm font-medium text-zinc-400 mb-2"
+    },
+    "navbar": "sticky top-0 z-50 backdrop-blur-xl bg-[#09090B]/80 border-b border-zinc-800/50",
+    "badges": "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-[#FFD60A]/10 text-[#FFD60A]"
+  },
+  "page_layouts": {
+    "landing": {
+      "hero": "Asymmetric layout. 60% left text/CTA, 40% right overlapping images with slight rotation. Overlay subtle noise texture on background.",
+      "featured_courses": "Horizontal scroll or 3-column bento grid.",
+      "testimonials": "Marquee strategy - slow, continuous scroll using react-fast-marquee."
+    },
+    "auth": {
+      "layout": "Split screen. Left: Beautiful cinematic image with dark overlay. Right: Centered form with max-w-md.",
+      "toggles": "Pill-shaped toggle for Student vs Instructor signup."
+    },
+    "catalog": {
+      "layout": "Sidebar filters (sticky, 25% width), Course grid (75% width, 2-3 columns with generous gap-8)."
+    },
+    "course_detail": {
+      "hero": "Full width dark banner, massive title, instructor info, stats.",
+      "content": "Two columns: 70% left (curriculum accordion, reviews), 30% right (sticky purchase card, video preview, add to cart/wishlist)."
+    },
+    "dashboards": {
+      "student": "Bento Grid layout. Top row: Welcome + Quick stats. Middle: Active course player widget. Bottom: Wishlist/Recommendations.",
+      "instructor": "Bento grid mode B (dense). Left: Revenue chart. Top right: Total students. Bottom right: Recent reviews list. Instructor 'Add Course' is a multi-step wizard."
+    },
+    "course_player": {
+      "layout": "Fluid width. Left 25%: Collapsible curriculum sidebar. Right 75%: Video player (16:9), tabs for overview, Q&A, and reviews."
+    }
+  },
+  "motion": {
+    "scroll": "Use lenis for smooth scrolling.",
+    "page_transitions": "Framer motion: initial={opacity: 0, y: 10} animate={opacity: 1, y: 0}.",
+    "hover_states": "Scale up images slightly inside overflow-hidden wrappers (group-hover:scale-105). Add subtle inner glow to cards."
+  },
+  "image_urls": {
+    "hero": {
+      "url": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwxfHxzdHVkZW50JTIwbGFwdG9wJTIwZGFyayUyMGNpbmVtYXRpY3xlbnwwfHx8fDE3ODQwMTM1NjN8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Cinematic student learning on laptop"
+    },
+    "course_coding": {
+      "url": "https://images.unsplash.com/photo-1738255654134-1877cb984a8f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBjb2Rpbmd8ZW58MHx8fHwxNzg0MDEzNTYz&ixlib=rb-4.1.0&q=85",
+      "description": "Code on dark screen for programming courses"
+    },
+    "course_design": {
+      "url": "https://images.unsplash.com/photo-1621111848501-8d3634f82336?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjBjcmVhdGl2ZSUyMHdvcmtzcGFjZSUyMGRhcmt8ZW58MHx8fHwxNzg0MDEzNTYzfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Creative workspace for design courses"
+    },
+    "instructor_1": {
+      "url": "https://images.unsplash.com/photo-1758600587730-a11917c13b85?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc4NDAxMzU2M3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Female instructor portrait"
+    },
+    "instructor_2": {
+      "url": "https://images.unsplash.com/photo-1764545973653-94c40d993495?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc4NDAxMzU2M3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Male instructor portrait"
+    }
+  },
+  "icons": {
+    "library": "lucide-react",
+    "stroke_width": 1.5,
+    "size_defaults": {
+      "small": 16,
+      "base": 20,
+      "large": 24
+    }
+  },
+  "empty_states": {
+    "style": "Centered content with dashed border container bg-[#121214]. Soft gray icon (w-12 h-12). Headline in white, subtext in zinc-400. One primary CTA.",
+    "loading": "Skeleton loaders using animate-pulse. Background of skeletons should be zinc-800/50."
+  },
+  "accessibility_and_testing": {
+    "contrast": "Text against #09090B must be at least #A1A1AA for secondary, #FFFFFF for primary. CTA text is #000000 on #FFD60A.",
+    "testing": "All interactive elements MUST include data-testid attribute. E.g., data-testid='enroll-button'."
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "NEVER use generic centered layouts or simplistic flat colors without texture. Embrace asymmetry.",
+    "DO NOT use generic gradients. Rely on rich, solid #09090B backgrounds with high-contrast yellow (#FFD60A) accents for interaction.",
+    "DO NOT apply universal transition like 'transition: all'. Explicitly state 'transition-colors', 'transition-transform'.",
+    "DO NOT center align the app container. No '.App { text-align: center; }'.",
+    "For interactive logic (calendar, dialogs, dropdowns, popovers), USE Shadcn UI components but heavily customize their Tailwind classes to match the dark theme.",
+    "Buttons should be pill-shaped or rounded-full for modern SaaS aesthetic.",
+    "Toasts MUST use Sonner.",
+    "NEVER use fully transparent backgrounds for navbars or dropdowns over content. Use backdrop-blur with bg-black/80 or solid #09090B.",
+    "Avoid standard 'Bootstrap' columns. Use Tailwind Grid with unequal columns (e.g., col-span-8 and col-span-4).",
+    "Ensure 2-3x more padding than standard presets. Give elements room to breathe (p-8, p-12)."
+  ]
+}

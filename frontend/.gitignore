@@ -1,0 +1,20 @@
+
+# dependencies
+/node_modules
+
+
+
+
+
+# production
+/build
+
+# misc
+.env
+.env.example
+.env.txt
+gitignore.txt
+
+
+
+dev.log
