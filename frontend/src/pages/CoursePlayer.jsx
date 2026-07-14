@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "lib/api";
-import { Check, PlayCircle, Star, ChevronRight, MessageSquare } from "lucide-react";
+import { Check, PlayCircle, Star, MessageSquare } from "lucide-react";
 import { Button } from "components/ui/button";
 import { Textarea } from "components/ui/textarea";
 import { toast } from "sonner";
@@ -46,7 +46,6 @@ export default function CoursePlayer() {
 
   if (!course) return <div className="p-24 text-zinc-500">Loading...</div>;
 
-  const isVideo = current?.videoUrl?.match(/\.(mp4|webm|mov)/i) || current?.videoUrl?.startsWith("http");
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 min-h-[calc(100vh-4rem)]">

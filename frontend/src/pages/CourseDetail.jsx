@@ -19,10 +19,7 @@ export default function CourseDetail() {
     api.get(`/course/${id}`).then((r) => { setCourse(r.data); setLoading(false); }).catch(() => setLoading(false));
   }, [id]);
 
-  const isEnrolled = course && user && course.studentsEnrolled >= 0 &&
-    Array.isArray(course.studentsEnrolledRaw)
-      ? course.studentsEnrolledRaw?.includes(user.id)
-      : false;
+
 
   const addToCart = async () => {
     if (!token) return nav("/login");

@@ -34,13 +34,16 @@ const Protected = ({ children, role }) => {
 function App() {
   const { token, setUser, logout } = useAuth();
 
-  useEffect(() => {
-    if (token) {
-      api.get("/profile/me").then((r) => setUser(r.data.user)).catch(() => logout());
-    }
-    // seed categories once (idempotent)
-    api.post("/seed/categories").catch(() => {});
-  }, [token]);
+useEffect(() => {
+  if (token) {
+    api
+      .get("/profile/me")
+      .then((r) => setUser(r.data.user))
+      .catch(() => logout());
+  }
+
+  api.post("/seed/categories").catch(() => {});
+}, [token, setUser, logout]);
 
   return (
     <div className="App grain">
