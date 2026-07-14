@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "lib/api";
 import { Button } from "components/ui/button";
 import { Input } from "components/ui/input";
-import { Label } from "components/ui/label";
 import { Textarea } from "components/ui/textarea";
 import { toast } from "sonner";
 import { Plus, Trash2, Upload, PlayCircle } from "lucide-react";
@@ -17,11 +16,14 @@ export default function EditCourse() {
   const [sub, setSub] = useState({ sectionId: "", title: "", description: "", videoUrl: "", timeDuration: "0" });
   const [uploading, setUploading] = useState(false);
 
-  const load = async () => {
-    const { data } = await api.get(`/course/${id}`);
-    setCourse(data);
-  };
-  useEffect(() => { load(); }, [id]);
+const load = useCallback(async () => {
+  const { data } = await api.get(`/course/${id}`);
+  setCourse(data);
+}, [id]);
+
+useEffect(() => {
+  load();
+}, [load]);
 
   const addSection = async () => {
     if (!newSection.trim()) return;
