@@ -13,32 +13,15 @@ dns.lookup("smtp.gmail.com", { all: true }, (err, addresses) => {
   }
 });
 
-const transporter =
-  GMAIL_USER && GMAIL_APP_PASSWORD
-    ? nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false, // Use false for port 587
-        family: 4,     // Force IPv4
-        auth: {
-          user: GMAIL_USER,
-          pass: GMAIL_APP_PASSWORD,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      })
-    : null;
-
-    if (transporter) {
-  transporter.verify((err, success) => {
-    if (err) {
-      console.error("SMTP Verify Error:", err);
-    } else {
-      console.log("SMTP Server is ready");
-    }
-  });
-}
+const transporter = nodemailer.createTransport({
+  host: "74.125.140.108",   // Google's SMTP IPv4 address
+  port: 587,
+  secure: false,
+  auth: {
+    user: GMAIL_USER,
+    pass: GMAIL_APP_PASSWORD,
+  },
+});
 
 async function sendEmail(to, subject, html) {
   if (!transporter) {
