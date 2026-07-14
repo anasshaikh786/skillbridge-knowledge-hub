@@ -7,6 +7,7 @@ const { seedCategories } = require("./src/models");
 
 const app = express();
 app.use(express.json({ limit: "10mb" }));
+console.log("CORS_ORIGINS =", process.env.CORS_ORIGINS);
 
 const origins = (process.env.CORS_ORIGINS || "*").split(",").map(s => s.trim());
 app.use(cors({ origin: origins.includes("*") ? true : origins, credentials: true }));
