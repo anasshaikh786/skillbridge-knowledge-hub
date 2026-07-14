@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "lib/api";
 import { Check, PlayCircle, Star, MessageSquare } from "lucide-react";
@@ -15,15 +15,19 @@ export default function CoursePlayer() {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
 
-  const load = async () => {
-    const { data } = await api.get(`/course/${courseId}`);
-    setCourse(data);
-    const p = await api.get(`/course-progress/${courseId}`);
-    setProgress(p.data.completedVideos || []);
-    const first = data.sections?.[0]?.subsections?.[0];
-    if (first) setCurrent(first);
-  };
-  useEffect(() => { load(); }, [courseId]);
+const load = useCallback(async () => {
+  const { data } = await api.get(`/course/${courseId}`);
+  setCourse(data);
+
+  const p = await api.get(`/course-progress/${courseId}`);
+  setProgress(p.data.completedVideos || []);
+
+  const first = data.sections?.[0]?.subsections?.[0];
+  if (first) setCurrent(first);
+}, [courseId]);
+useEffect(() => {
+  load();
+}, [load]);
 
   const markDone = async () => {
     if (!current) return;

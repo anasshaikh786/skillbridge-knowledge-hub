@@ -7,7 +7,7 @@ import { Label } from "components/ui/label";
 import { Textarea } from "components/ui/textarea";
 import { toast } from "sonner";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "components/ui/select";
-import { Upload, ImageIcon } from "lucide-react";
+import { Upload } from "lucide-react";
 
 export default function CreateCourse() {
   const nav = useNavigate();

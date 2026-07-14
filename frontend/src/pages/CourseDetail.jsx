@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { api } from "lib/api";
 import { Button } from "components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "components/ui/accordion";
@@ -12,7 +12,7 @@ export default function CourseDetail() {
   const { id } = useParams();
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const nav = useNavigate();
 
   useEffect(() => {

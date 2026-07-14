@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "store/auth";
 import { Button } from "components/ui/button";
-import { ShoppingCart, Heart, LogOut, User, BookOpen, LayoutDashboard, Menu } from "lucide-react";
+import { ShoppingCart, Heart, LogOut, User, BookOpen, LayoutDashboard } from "lucide-react";
 import {
   DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuLabel,
 } from "components/ui/dropdown-menu";
