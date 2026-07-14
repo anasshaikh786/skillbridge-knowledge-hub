@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const { Resend } = require("resend");
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-async function sendOTP(email, otp) {
+async function sendEmail(email, otp) {
   try {
     const result = await resend.emails.send({
       from: "noreply@yourdomain.com", // or use resend's default
@@ -88,7 +88,7 @@ module.exports = {
   uploadMedia,
   createRazorpayOrder,
   verifyRazorpaySignature,
-  RESEND_ENABLED: !!transporter,
+  RESEND_ENABLED: !!true,
   RAZORPAY_ENABLED,
   RAZORPAY_KEY_ID,
 };
