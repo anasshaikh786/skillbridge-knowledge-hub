@@ -2,9 +2,16 @@ const crypto = require("crypto");
 
 // ---------- Email (Resend) ----------
 const nodemailer = require("nodemailer");
-
+const dns = require("dns");
 const GMAIL_USER = process.env.GMAIL_USER;
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
+dns.lookup("smtp.gmail.com", { all: true }, (err, addresses) => {
+  if (err) {
+    console.error("DNS Error:", err);
+  } else {
+    console.log("SMTP DNS:", addresses);
+  }
+});
 
 const transporter =
   GMAIL_USER && GMAIL_APP_PASSWORD
