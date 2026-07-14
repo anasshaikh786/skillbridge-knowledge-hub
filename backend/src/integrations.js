@@ -1,70 +1,22 @@
 const crypto = require("crypto");
 
 // ---------- Email (Resend) ----------
-const nodemailer = require("nodemailer");
-const dns = require("dns");
-const GMAIL_USER = process.env.GMAIL_USER;
-const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Optional: Debug DNS lookup (not needed for transporter)
-dns.lookup("smtp.gmail.com", { all: true }, (err, addresses) => {
-  if (err) {
-    console.error("DNS Error:", err);
-  } else {
-    console.log("SMTP DNS resolved to:", addresses);
-  }
-});
-
-// ✅ USE HOSTNAME, NOT IP ADDRESS
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",  // ← Use hostname, not IP
-  port: 587,
-  secure: false,           // TLS, not SSL
-  auth: {
-    user: GMAIL_USER,
-    pass: GMAIL_APP_PASSWORD,
-  },
-  connectionTimeout: 10000,
-  socketTimeout: 10000,
-  logger: true,
-  debug: true
-});
-
-// Test the connection
-transporter.verify((error, success) => {
-  if (error) {
-    console.log("❌ SMTP Connection Failed:", error);
-  } else {
-    console.log("✅ SMTP Connection Successful!");
-  }
-});
-
-async function sendEmail(to, subject, html) {
-  if (!transporter) {
-    console.log(`[MOCK EMAIL] to=${to} subject=${subject}`);
-    return { mock: true };
-  }
-
+async function sendOTP(email, otp) {
   try {
-    const info = await transporter.sendMail({
-      from: `"SkillBridge" <${GMAIL_USER}>`,
-      to,
-      subject,
-      html,
+    const result = await resend.emails.send({
+      from: "noreply@yourdomain.com", // or use resend's default
+      to: email,
+      subject: "Your OTP",
+      html: `<p>Your OTP: <strong>${otp}</strong></p>`,
     });
-
-    console.log("Email sent:", info.messageId);
-
-    return {
-      success: true,
-      messageId: info.messageId,
-    };
-  } catch (err) {
-    console.error("[Email Error]", err);
-
-    return {
-      error: err.message,
-    };
+    console.log("✅ Email sent:", result);
+    return result;
+  } catch (error) {
+    console.error("❌ Email error:", error);
+    throw error;
   }
 }
 // ---------- Cloudinary ----------
