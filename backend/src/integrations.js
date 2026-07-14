@@ -2,25 +2,34 @@ const crypto = require("crypto");
 
 // ---------- Email (Resend) ----------
 const sgMail = require("@sendgrid/mail");
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-async function sendEmail(email, otp) {
+async function sendEmail(to, subject, html) {
   try {
-    await sgMail.send({
-      to: email,
-      from: "noreply@sendgrid.net",  // ✅ Works without domain verification
-      subject: "Your OTP",
-      html: `<p>Your OTP: <strong>${otp}</strong></p>`,
+    const result = await sgMail.send({
+      to,
+      from: process.env.SENDGRID_FROM_EMAIL,
+      subject,
+      html,
     });
-    console.log("✅ Email sent");
+
+    console.log("Email sent", result);
     return { success: true };
   } catch (error) {
-    console.error("❌ Email error:", error);
+    console.error("SendGrid Error");
+
+    if (error.response) {
+      console.error(JSON.stringify(error.response.body, null, 2));
+    } else {
+      console.error(error);
+    }
+
     throw error;
   }
 }
 
-module.exports = sendEmail;
+module.exports = { sendEmail };
 // ---------- Cloudinary ----------
 const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || "";
 const CLOUD_KEY = process.env.CLOUDINARY_API_KEY || "";
