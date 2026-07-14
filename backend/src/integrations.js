@@ -9,13 +9,29 @@ const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
 const transporter =
   GMAIL_USER && GMAIL_APP_PASSWORD
     ? nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // Use false for port 587
+        family: 4,     // Force IPv4
         auth: {
           user: GMAIL_USER,
           pass: GMAIL_APP_PASSWORD,
         },
+        tls: {
+          rejectUnauthorized: false,
+        },
       })
     : null;
+
+    if (transporter) {
+  transporter.verify((err, success) => {
+    if (err) {
+      console.error("SMTP Verify Error:", err);
+    } else {
+      console.log("SMTP Server is ready");
+    }
+  });
+}
 
 async function sendEmail(to, subject, html) {
   if (!transporter) {
