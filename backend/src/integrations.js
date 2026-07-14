@@ -5,22 +5,38 @@ const nodemailer = require("nodemailer");
 const dns = require("dns");
 const GMAIL_USER = process.env.GMAIL_USER;
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
+
+// Optional: Debug DNS lookup (not needed for transporter)
 dns.lookup("smtp.gmail.com", { all: true }, (err, addresses) => {
   if (err) {
     console.error("DNS Error:", err);
   } else {
-    console.log("SMTP DNS:", addresses);
+    console.log("SMTP DNS resolved to:", addresses);
   }
 });
 
+// ✅ USE HOSTNAME, NOT IP ADDRESS
 const transporter = nodemailer.createTransport({
-  host: "74.125.140.108",   // Google's SMTP IPv4 address
+  host: "smtp.gmail.com",  // ← Use hostname, not IP
   port: 587,
-  secure: false,
+  secure: false,           // TLS, not SSL
   auth: {
     user: GMAIL_USER,
     pass: GMAIL_APP_PASSWORD,
   },
+  connectionTimeout: 10000,
+  socketTimeout: 10000,
+  logger: true,
+  debug: true
+});
+
+// Test the connection
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("❌ SMTP Connection Failed:", error);
+  } else {
+    console.log("✅ SMTP Connection Successful!");
+  }
 });
 
 async function sendEmail(to, subject, html) {
