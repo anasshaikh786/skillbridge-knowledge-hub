@@ -16,15 +16,15 @@ export default function VerifyOtp() {
   const [devOtp, setDevOtp] = useState("");
 
   useEffect(() => {
-    const raw = sessionStorage.getItem("sn_signup");
-    if (!raw) {
-      nav("/signup");
-      return;
-    }
-    setSignup(JSON.parse(raw));
-    const d = sessionStorage.getItem("sn_dev_otp");
-    if (d) setDevOtp(d);
-  }, []);
+  const raw = sessionStorage.getItem("sn_signup");
+  if (!raw) {
+    nav("/signup");
+    return;
+  }
+  setSignup(JSON.parse(raw));
+  const d = sessionStorage.getItem("sn_dev_otp");
+  if (d) setDevOtp(d);
+}, [nav]);
 
   const onSubmit = async () => {
     if (otp.length !== 6) {
